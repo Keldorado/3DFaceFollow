@@ -14,7 +14,7 @@ void ofApp::setup() {
     cam.initGrabber(640, 480); //the camand that initiates the camera
     model.loadModel("dog/dog.3ds"); //loads the image
     ofEnableAlphaBlending(); //Turns on the alpha because our png has an alpha channel
-    light.enable();
+    light.enable(); //enables light
     
     
     ofDisableArbTex(); //we need to call this for textures to work on models
@@ -56,26 +56,20 @@ void ofApp::draw() {
         
         
         
-        ofPopMatrix();
-        ofPushMatrix();
-        ofTranslate(object.getPosition());
-        ofDrawBitmapStringHighlight(ofToString(finder.getLabel(i)), 0, 0);
-        ofLine(ofVec2f(), toOf(finder.getVelocity(i)) * 10);
-        ofPopMatrix();
+        ofPopMatrix(); //pops the matrix
+        ofPushMatrix(); //pushes the matrix
+        ofTranslate(object.getPosition()); //gets our object's position
+        ofDrawBitmapStringHighlight(ofToString(finder.getLabel(i)), 0, 0); //draws the bit map
+        ofLine(ofVec2f(), toOf(finder.getVelocity(i)) * 10); //gets our velocity
+        ofPopMatrix(); //pops the matrix
     }
     
-    ofDisableDepthTest();
-    light.disable();
-    ofDisableLighting();
-    ofDisableSeparateSpecularLight();
+    ofDisableDepthTest(); //prevents the back of the model from shinning through to the front
+    light.disable(); //disables our light
+    ofDisableLighting(); //is ables the lighting
+    ofDisableSeparateSpecularLight(); //disables the specular color
     
-    ofSetColor(255, 255, 255, 255);
-    
-    //first let's just draw the model with the model object
-    //drawWithModel();
-    
-    //then we'll learn how to draw it manually so that we have more control over the data
-    //drawWithMesh();
+    ofSetColor(255, 255, 255, 255); //sets our color
 }
 
 //--------------------------------------------------------------
