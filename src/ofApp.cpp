@@ -18,9 +18,6 @@ void ofApp::setup() {
     
     
     ofDisableArbTex(); //we need to call this for textures to work on models
-    //ofEnableDepthTest();//this makes sure that the back of the model doesn't show through the front
-    //model.loadModel("dog/dog.3ds");//now we load our model
-    //model.setPosition(ofGetWidth()*.5, ofGetHeight() * 0.75, 0);
     
     
 }
@@ -36,11 +33,11 @@ void ofApp::update() {
 //--------------------------------------------------------------
 void ofApp::draw() {
     cam.draw(0,0); //draws what ever the hell the camera sees
-    ofSetColor(255);
-    ofEnableDepthTest();
+    ofSetColor(255); //sets the color
+    ofEnableDepthTest(); //Prevents the back of the model from shinning through to the front
     glShadeModel(GL_SMOOTH); //some model / light stuff
-    light.enable();
-    ofEnableSeparateSpecularLight();
+    light.enable(); //enables the light
+    ofEnableSeparateSpecularLight(); //enables the specular light
 
     
     for(int i = 0; i < finder.size(); i++) { //look for the size of finder. The size of finder is the number of faces we see. 1 face = 1 loop, 2 face = 2 loop, etc.
@@ -77,26 +74,25 @@ void ofApp::draw() {
 void ofApp::drawWithMesh(){
     
     //get the model attributes we need
-    ofVec3f scale = model.getScale();
-    ofVec3f position = model.getPosition();
-    float normalizedScale = model.getNormalizedScale();
-    ofVboMesh mesh = model.getMesh(0);
-    ofTexture texture;
-    ofxAssimpMeshHelper& meshHelper = model.getMeshHelper( 0 );
-    bool bHasTexture = meshHelper.hasTexture();
+    ofVec3f scale = model.getScale(); //gets the scale
+    ofVec3f position = model.getPosition(); //gets the position
+    float normalizedScale = model.getNormalizedScale(); //normailzes the scale
+    ofVboMesh mesh = model.getMesh(0); //gets the mesh
+    ofTexture texture; //gets the texture
+    ofxAssimpMeshHelper& meshHelper = model.getMeshHelper( 0 ); //calls the mesh helper
+    bool bHasTexture = meshHelper.hasTexture(); //tells the mesh helper that the mesh has texture
     if( bHasTexture ) {
-        texture = model.getTextureForMesh(0);
+        texture = model.getTextureForMesh(0); //gets the texture for the mesh
     }
     
-    ofMaterial material = model.getMaterialForMesh(0);
+    ofMaterial material = model.getMaterialForMesh(0); //gets the matiral for the mesh
     
-    ofPushMatrix();
+    ofPushMatrix(); //pushes the matrix
     
     //translate and scale based on the positioning.
     ofTranslate(position);
     ofRotate(-ofGetMouseX(), 0, 1, 0);
     ofRotate(90,1,0,0);
-    
     
     ofScale(normalizedScale, normalizedScale, normalizedScale);
     ofScale(scale.x,scale.y,scale.z);
@@ -115,56 +111,10 @@ void ofApp::drawWithMesh(){
     //draw the model manually
     if(bHasTexture) texture.bind();
     material.begin();
-    //mesh.drawWireframe(); //you can draw wireframe too
     mesh.drawFaces();
     material.end();
     if(bHasTexture) texture.unbind();
     
     ofPopMatrix();
     
-}
-
-//--------------------------------------------------------------
-void ofApp::keyPressed(int key){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::keyReleased(int key){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::mouseMoved(int x, int y ){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::mouseDragged(int x, int y, int button){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::mousePressed(int x, int y, int button){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::mouseReleased(int x, int y, int button){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::windowResized(int w, int h){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::gotMessage(ofMessage msg){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::dragEvent(ofDragInfo dragInfo){ 
-
 }
