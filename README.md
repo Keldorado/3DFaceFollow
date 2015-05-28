@@ -6,7 +6,7 @@ How to interact: All you need to do is make your face visible to the camera in y
 
 
 
-![Screen Shot 2015-05-03 at 3.53.22 PM.png](/Users/austinkelley/Documents/Developer/of_v0.8.4_osx_release/apps/myApps/3dFollowBodyPart2/Assets/Screen Shot 2015-05-03 at 3.53.22 PM.png)
+![Screen Shot 2015-05-03 at 3.53.22 PM.png](https://github.com/Keldorado/3DFaceFollow/blob/master/Assets/Screen%20Shot%202015-05-03%20at%203.53.22%20PM.png)
 
 
-![Screen Shot 2015-05-03 at 3.59.30 PM.png](/Users/austinkelley/Documents/Developer/of_v0.8.4_osx_release/apps/myApps/3dFollowBodyPart2/Assets/Screen Shot 2015-05-03 at 3.59.30 PM.png)
+![Screen Shot 2015-05-03 at 3.59.30 PM.png](https://github.com/Keldorado/3DFaceFollow/blob/master/Assets/Screen%20Shot%202015-05-03%20at%203.59.30%20PM.png)
